@@ -5,10 +5,13 @@ import org.example.entities.Product;
 import org.example.service.Warehouse;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GetAllProductsTest {
 
@@ -25,4 +28,21 @@ public class GetAllProductsTest {
         // Assert
         assertEquals(2, products.size(), "The number of products should be 2");
     }
+
+    @Test
+    public void testListAllProducts() {
+        Warehouse warehouse = new Warehouse();
+        warehouse.addProduct(new Product("100", "Test Product", Category.FPS, 9, LocalDate.now(), LocalDate.now()));
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        App.listAllProducts(warehouse);
+
+        String output = out.toString();
+        assertTrue(output.contains("Test Product"));
+    }
+
+
+
 }

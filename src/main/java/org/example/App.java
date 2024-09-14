@@ -124,7 +124,7 @@ public class App {
         scanner.close();
     }
     // Method to add a product
-    private static void addProductUI(Warehouse warehouse, Scanner scanner) {
+    static void addProductUI(Warehouse warehouse, Scanner scanner) {
         System.out.print("Enter product ID: ");
         String id = scanner.nextLine();
 
@@ -156,7 +156,7 @@ public class App {
     }
 
     // Method to list all products
-    private static void listAllProducts(Warehouse warehouse) {
+    static void listAllProducts(Warehouse warehouse) {
         List<Product> products = warehouse.getAllProducts();
         if (products.isEmpty()) {
             System.out.println("No products found.");
