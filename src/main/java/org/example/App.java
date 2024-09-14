@@ -168,7 +168,7 @@ public class App {
     }
 
     // Method to find a product by its ID
-    private static void findProductByIdUI(Warehouse warehouse, Scanner scanner) {
+    static void findProductByIdUI(Warehouse warehouse, Scanner scanner) {
         System.out.print("Enter product ID: ");
         String id = scanner.nextLine();
 
@@ -242,7 +242,7 @@ public class App {
     }
 
     // Method to modify an existing product
-    private static void modifyProductUI(Warehouse warehouse, Scanner scanner) {
+    static void modifyProductUI(Warehouse warehouse, Scanner scanner) {
         System.out.print("Enter product ID to modify: ");
         String id = scanner.nextLine();
 
