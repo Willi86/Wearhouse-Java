@@ -1,24 +1,3 @@
-// the core Class I will have
-//    - A collection (list) of products (games)
-//
-//    Methods:
-//        - Add a product:
-//            - Validate that the product has the required details (e.g., name is not empty).
-//            - Add the product to the list.
-//
-//        - Modify a product:
-//            - Find the product by its ID.
-//            - Allow modification of name, category (genre), or rating.
-//            - Update the modification date.
-//
-//        - Get all products:
-//            - Return the list of all games in the warehouse.
-//
-//        - Get a product by ID:
-//            - Search the list for a product with the matching ID.
-//
-//        - Get products by category (genre):
-//            - Return all products that belong to the given category (genre).
 
 package org.example.service;
 // Class managing products

@@ -46,7 +46,7 @@ public class GetModifiedAfrerTest {
 
         List<Product> products = warehouse.getProductsModifiedAfterCreation();
 
-        // No products should be modified after creation
+
         assertEquals(0, products.size());
     }
 

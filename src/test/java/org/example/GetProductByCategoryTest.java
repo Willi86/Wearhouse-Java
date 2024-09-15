@@ -20,5 +20,4 @@ public class GetProductByCategoryTest {
         assertEquals(2, products.size(), "The number of products should be 2");
     }
 
-    // Other tests...
 }

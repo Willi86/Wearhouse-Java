@@ -14,21 +14,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GetAllProductsTest {
-
+//Verifies Warehouse returns a list with 2 products
     @Test
     void testGetAllProducts() {
-        // Arrange
+
         Warehouse warehouse = new Warehouse();
         warehouse.addProduct(new Product("1", "Product 1", Category.ACTION, 8, LocalDate.now(), LocalDate.now()));
         warehouse.addProduct(new Product("2", "Product 2", Category.FPS, 7, LocalDate.now(), LocalDate.now()));
 
-        // Act
+
         List<Product> products = warehouse.getAllProducts();
 
-        // Assert
         assertEquals(2, products.size(), "The number of products should be 2");
     }
-
+// checks if the listAllProducts contains the product name
     @Test
     public void testListAllProducts() {
         Warehouse warehouse = new Warehouse();
