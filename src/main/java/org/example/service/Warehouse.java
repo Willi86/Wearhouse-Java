@@ -2,6 +2,7 @@
 package org.example.service;
 // Class managing products
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import org.example.entities.Product;
 import org.example.entities.Category;
@@ -13,7 +14,7 @@ public class Warehouse {
     private final Map<String, Product> productsById;
     // Constructor: Initialize the map
     public Warehouse() {
-        this.productsById = new HashMap<>();
+        this.productsById = new ConcurrentHashMap<>();
     }
 
     // Method to add a new product
