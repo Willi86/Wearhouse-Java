@@ -20,17 +20,26 @@ class WarehouseTest {
     @Test
     void testAddProductSuccess() {
         Warehouse warehouse = new Warehouse();
-        Product product = new Product("1", "Test Product", Category.ACTION, 8, LocalDate.now(), LocalDate.now());
+        Product product = new Product("1", "Test Product", Category.ACTION, 5, LocalDate.now(), LocalDate.now());
         warehouse.addProduct(product);
         assertNotNull(warehouse.getProductById("1").orElse(null));
     }
 
     @Test
-    void testAddProductFailure() {
+    void testAddProductDuplicateIdFailure() {
         Warehouse warehouse = new Warehouse();
-        Product product = new Product("1", "", Category.ACTION, 8, LocalDate.now(), LocalDate.now());
-        assertThrows(IllegalArgumentException.class, () -> warehouse.addProduct(product));
+
+        // Add the first product with ID "1"
+        Product product1 = new Product("1", "Halo Infinite", Category.ACTION, 5, LocalDate.now(), LocalDate.now());
+        warehouse.addProduct(product1);
+
+        // Try to add another product with the same ID "1" - this should fail
+        Product product2 = new Product("1", "Forza Horizon 5", Category.RACING, 4, LocalDate.now(), LocalDate.now());
+
+        // Test should expect an IllegalArgumentException for duplicate product ID
+        assertThrows(IllegalArgumentException.class, () -> warehouse.addProduct(product2));
     }
+
     @Test
     public void testAddProductUI() {
         Warehouse warehouse = new Warehouse();
@@ -50,8 +59,8 @@ class WarehouseTest {
         App.addProductUI(warehouse, scanner);
 
         // Assert product was added
-        assertThat(warehouse.getProductById("100")).isPresent();
-        assertThat(warehouse.getProductById("100").get().name()).isEqualTo("New Product");
+        Product product = warehouse.getProductById("100").orElseThrow();
+        assertThat(product.name()).isEqualTo("New Product");
 
         // Verify the output
         String output = out.toString();

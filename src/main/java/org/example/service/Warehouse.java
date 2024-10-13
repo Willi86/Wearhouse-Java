@@ -3,6 +3,7 @@ package org.example.service;
 // Class managing products
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import org.example.entities.Product;
 import org.example.entities.Category;
@@ -15,15 +16,20 @@ public class Warehouse {
     // Constructor: Initialize the map
     public Warehouse() {
         this.productsById = new ConcurrentHashMap<>();
+
     }
 
     // Method to add a new product
     public void addProduct(Product product) {
-        // Simple validation: check that the product has a name
-        if (product.name() == null || product.name().isEmpty()) {
-            throw new IllegalArgumentException("Product name cannot be empty.");
+        // Check if the product ID already exists
+        if (productsById.containsKey(product.id())) {
+            throw new IllegalArgumentException("Product ID already exists.");
         }
 
+
+
+        // Log the product being added
+        System.out.println("Adding product: " + product);
 
         // Add the product to the map
         productsById.put(product.id(), product);
@@ -32,7 +38,7 @@ public class Warehouse {
     // Method to get all products
     public List<Product> getAllProducts() {
         // Return a list of all products from the map
-        return new ArrayList<>(productsById.values());
+        return new CopyOnWriteArrayList<>(productsById.values());
     }
 
     // Method to get a product by ID
