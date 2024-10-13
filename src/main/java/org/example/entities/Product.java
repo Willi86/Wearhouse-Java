@@ -17,13 +17,15 @@ public record Product(
     @Override
     public String toString() {
         return String.format(
-                "Product Details:\n" +
-                        "ID: %s\n" +
-                        "Name: %s\n" +
-                        "Category: %s\n" +
-                        "Rating: %d\n" +
-                        "Creation Date: %s\n" +
-                        "Modification Date: %s\n",
+                """
+                        Product Details:
+                        ID: %s
+                        Name: %s
+                        Category: %s
+                        Rating: %d
+                        Creation Date: %s
+                        Modification Date: %s
+                        """,
                 id, name, category, rating, creationDate, modificationDate
         );
     }
